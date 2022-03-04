@@ -1,0 +1,78 @@
+{
+    "name": "@freenow-gr/logger",
+    "version": "1.0.7",
+    "description": "logger for microservices",
+    "engines": {
+        "node": ">=8"
+    },
+    "license": "UNLICENSED",
+    "main": "dist/winston.js",
+    "nyc": {
+        "include": [
+            "**/*.js"
+        ],
+        "exclude": [
+            "**/node_modules/**",
+            "**/test/**",
+            "**/coverage/**"
+        ],
+        "all": true
+    },
+    "keywords": [
+        "elkb",
+        "elk",
+        "npm",
+        "package",
+        "beat",
+        "microservices"
+    ],
+    "scripts": {
+        "lint": "eslint .",
+        "start": "npm run shell",
+        "jest": "jest --coverage",
+        "test": "jest --coverage",
+        "coverage": "nyc report --reporter=lcov",
+        "show-cover": "open coverage/lcov-report/index.html",
+        "prebuild": "rm -rf dist",
+        "build": "npm-run-all --parallel build:*",
+        "build:main": "babel --copy-files --out-dir dist --ignore src/tests,src/logs src",
+        "build:umd": "webpack --output-filename index.umd.js --mode development",
+        "build:umd.min": "webpack --output-filename index.umd.min.js --mode production"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/danias/freenow-libraries.git"
+    },
+    "dependencies": {
+        "app-root-path": "^2.2.1",
+        "axios": "^0.19.0",
+        "cookie-parser": "~1.4.3",
+        "debug": "~2.6.9",
+        "express": "^4.17.1",
+        "moment-timezone": "^0.5.26",
+        "morgan": "~1.9.0",
+        "winston": "^3.2.1",
+        "winston-logstash": "^0.4.0"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-loader": "^7.1.5",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-2": "^6.24.1",
+        "fs": "^0.0.1-security",
+        "jest": "^24.7.1",
+        "json-loader": "^0.5.7",
+        "npm-run-all": "^4.1.5",
+        "readline": "^1.3.0",
+        "util": "^0.11.1",
+        "webpack": "^4.30.0",
+        "webpack-cli": "^3.3.2",
+        "webpack-dev-server": "^3.3.1"
+    },
+    "babel": {
+        "presets": [
+            "es2015",
+            "stage-2"
+        ]
+    }
+}

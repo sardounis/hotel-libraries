@@ -1,0 +1,70 @@
+{
+    "name": "@freenow-gr/geo",
+    "version": "1.4.2",
+    "description": "Geo related functions",
+    "engines": {
+        "node": ">=8"
+    },
+    "license": "UNLICENSED",
+    "main": "dist/index.js",
+    "nyc": {
+        "include": [
+            "**/*.js"
+        ],
+        "exclude": [
+            "**/node_modules/**",
+            "**/test/**",
+            "**/coverage/**"
+        ],
+        "all": true
+    },
+    "keywords": [
+        "getRideDistance",
+        "geo",
+        "npm",
+        "package",
+        "beat",
+        "hotels"
+    ],
+    "scripts": {
+        "lint": "eslint .",
+        "start": "npm run shell",
+        "jest": "jest --coverage",
+        "test": "jest --coverage",
+        "coverage": "nyc report --reporter=lcov",
+        "show-cover": "open coverage/lcov-report/index.html",
+        "prebuild": "rm -rf dist",
+        "build": "npm-run-all --parallel build:*",
+        "build:main": "babel --copy-files --out-dir dist --ignore src/tests src",
+        "build:umd": "webpack --output-filename index.umd.js --mode development",
+        "build:umd.min": "webpack --output-filename index.umd.min.js --mode production"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/danias/freenow-libraries.git"
+    },
+    "dependencies": {
+        "@mapbox/polyline": "^1.1.0",
+        "request-promise": "^4.2.4",
+        "webpack-node-externals": "^1.7.2"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-loader": "^7.1.5",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-2": "^6.24.1",
+        "jest": "^24.7.1",
+        "json-loader": "^0.5.7",
+        "npm-run-all": "^4.1.5",
+        "util": "^0.11.1",
+        "webpack": "^4.30.0",
+        "webpack-cli": "^3.3.2",
+        "webpack-dev-server": "^3.3.1"
+    },
+    "babel": {
+        "presets": [
+            "es2015",
+            "stage-2"
+        ]
+    }
+}

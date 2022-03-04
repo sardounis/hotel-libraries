@@ -1,0 +1,10 @@
+# google Api key
+config.js
+
+*/test
+/test
+*/logs
+/logs
+*/logs/combined.log
+logger/src/logs/combined.log
+logger/src/logs/error.log
